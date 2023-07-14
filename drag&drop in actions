@@ -1,0 +1,25 @@
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Action;
+import org.openqa.selenium.interactions.Actions;
+import java.util.concurrent.TimeUnit;
+public class DrgAndDrp{
+   public static void main(String[] args) {
+      System.setProperty("webdriver.chrome.driver", "C:\Users\ghs6kor\Desktop\Java\chromedriver.exe");
+      WebDriver driver = new ChromeDriver();
+      String url = " https://jqueryui.com/draggable/v";
+      driver.get(url);
+      driver.manage().timeouts().implicitlyWait(12, TimeUnit.SECONDS);
+      driver.switchTo().frame(0);
+      WebElement source= driver.findElement(By.id("draggable"));
+      WebElement target= driver.findElement(By.id("droppable"));
+      // dragAndDrop() method for dragging the element from source to //destination
+      Actions a = new Actions(driver);
+      Thread.sleep(5000);
+      a.dragAndDrop(source, target).build().perform();
+      Thread.sleep(5000);
+      driver.quit();
+   }
+}
